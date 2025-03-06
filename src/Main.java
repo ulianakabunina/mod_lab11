@@ -18,16 +18,16 @@ class Person{
 class Student extends Person{
     public int Kurs;
     public String Faculty;
-    private String DataPost;
+    private int DataPost;
 
-    Student(String fio, String phone, int age, int kurs, String faculty, String data){
+    Student(String fio, String phone, int age, int kurs, String faculty, int data){
         super(fio, phone, age);
         this.DataPost = data;
         this.Kurs = kurs;
         this.Faculty = faculty;
     }
 
-    public String getDataPost() {
+    public int getDataPost() {
         return DataPost;
     }
 
@@ -39,9 +39,9 @@ class Student extends Person{
 public class Main {
     public static void main(String[] args) {
         Student[] students = new Student[3];
-        students[0] = new Student("Попов А.И.", "79840000000", 22, 4, "ЭФ", "01.09.2019");
-        students[1] = new Student("Гоголь П.К.", "77640000000", 20, 2, "ЭФ", "01.09.2022");
-        students[2] = new Student("Виров О.Н.", "75430000000", 19, 1, "ЮФ", "01.09.2023");
+        students[0] = new Student("Попов А.И.", "79840000000", 22, 4, "ЭФ", 2019);
+        students[1] = new Student("Гоголь П.К.", "77640000000", 20, 2, "ЭФ", 2022);
+        students[2] = new Student("Виров О.Н.", "75430000000", 19, 1, "ЮФ", 2023);
 
         for (Student student: students){
             System.out.println("Студенты университета: " + student.Display());
@@ -62,7 +62,7 @@ public class Main {
         int year = in.nextInt();
         System.out.println("Студенты, поступившие после " + year + " года");
         for (Student student: students) {
-            if (Integer.parseInt(student.getDataPost().substring(6)) > year) {
+            if (student.getDataPost() > year) {
                 System.out.println(student.FIO);
             }
         }
